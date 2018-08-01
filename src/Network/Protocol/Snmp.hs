@@ -278,7 +278,7 @@ data Coupla = Coupla { oid :: !OID, value :: !Value }
   deriving (Eq, Ord)
 
 -- | Variable bindings
-newtype Suite = Suite [Coupla] deriving (Eq, Monoid)
+newtype Suite = Suite [Coupla] deriving (Eq, Semigroup, Monoid)
 
 -- ** Types describing header
 
