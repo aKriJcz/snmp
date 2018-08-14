@@ -142,8 +142,8 @@ import           Data.Binary.Get
 import           Data.Binary.Put
 import qualified Data.ByteArray           as BA
 import           Data.Int
-import           Data.Monoid              ((<>))
 import           Data.Typeable            (Typeable)
+import           Data.Semigroup
 
 -- $example
 --
@@ -277,8 +277,10 @@ data Request = GetRequest     { rid :: !RequestId, es :: !ErrorStatus, ei :: !Er
 data Coupla = Coupla { oid :: !OID, value :: !Value }
   deriving (Eq, Ord)
 
+#if MIN_VERSION_base(4,9,0)
 -- | Variable bindings
 newtype Suite = Suite [Coupla] deriving (Eq, Semigroup, Monoid)
+#endif
 
 -- ** Types describing header
 
